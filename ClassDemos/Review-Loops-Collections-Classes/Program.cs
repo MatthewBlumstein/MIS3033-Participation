@@ -45,6 +45,47 @@ namespace Review_Loops_Collections_Classes
                 Console.WriteLine($"{students[key]} [{key}].");
             }
 
+            List<Student> studs = new List<Student>();
+
+            Student katie = new Student();
+            katie.FirstName = "Katie";
+            katie.LastName = "Harris";
+            katie.ID = 1;
+            katie.Birthdate = Convert.ToDateTime("3/11/1998");
+
+            studs.Add(katie);
+
+            for(int i = 0; i < studentIds.Length; i++)
+            {
+                Student s = new Student();
+                s.FirstName = studentFirstNames[i];
+                s.LastName = studentsLastNames[i];
+                s.ID = studentIds[i];
+
+                studs.Add(s);
+            }
+
+            foreach(Student student in studs)
+            {
+                Console.WriteLine($"{student.LastName}, {student.FirstName} [{student.ID}] was born on {student.Birthdate.ToLongDateString()}.");
+                bool isUpper = true;
+                string crazyFirstName = "";
+                foreach(var letter in student.FirstName)
+                {
+                    if (isUpper == true)
+                    {
+                        crazyFirstName += letter.ToString().ToUpper();
+                        isUpper = false;
+                    }
+                    else
+                    {
+                        crazyFirstName += letter.ToString().ToLower();
+                        isUpper = true;
+                    }
+                }
+                Console.WriteLine($"Crazy firstname is {crazyFirstName}");
+            }
+
             Console.ReadKey();
         }
     }
